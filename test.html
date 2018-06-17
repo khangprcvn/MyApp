@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <meta charset=utf-8 />
+    <title>JS Bin</title>
+</head>
+
+<body>
+    <button class="buttonError" onClick={pageHandler.init()}>Show Golfer: Non-Bind Example</button>
+    <!-- <button class="buttonGood">Show Golfer: Bind Example</button> -->
+    <script>
+        let pageHandler = {
+            id: "123456",
+            init: function () {
+                document.addEventListener("mouseover", function (event) {
+                    this.doSomeThing(event.type);
+                }.bind(this), false);
+            },
+            doSomeThing: function (type) {
+                console.log(`Handing + ${type} + for + ${this.id}`);
+            }
+        };
+    </script>
+
+</body>
+
+</html>
