@@ -1,10 +1,27 @@
-function foo(something) {
-    console.log(this.a, something);
-    return this.a + something;
+function PersonType(name) {
+    this.name = name;
 }
-var obj = {
-    a : 2
+PersonType.create = function(name) {
+    return new PersonType(name);
+};
+PersonType.prototype.sayName = function() {
+    console.log(this.name);
 }
-var bar = foo.bind(obj);
-var b = bar(3);
-console.log(b);
+// var name = new PersonType.create("Khang");
+// name.sayName();
+
+class PersonType2 {
+    constructor(name) {
+        this.name = name;
+    }
+    sayName() {
+        console.log(this.name);
+    }
+    static create(name) {
+        return new PersonType2(name);
+    }
+}
+let person = PersonType2.create("Viet");
+person.sayName();
+let person2 = new PersonType2("Do");
+person2.sayName(); 
